@@ -26,7 +26,6 @@ public class PaymentToProcess
         ServiceBusReceivedMessage message,
         ServiceBusMessageActions messageActions)
     {
-        _logger.LogInformation("Message ID: {id}", message.MessageId);
         _logger.LogInformation("Message Body: {body}", message.Body);
 
         var paymentToProcess = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body.ToString());
@@ -47,6 +46,8 @@ public class PaymentToProcess
         var sender = _serviceBusClient.CreateSender("payment-result");
         var resultMessage = new ServiceBusMessage(resultJson);
         await sender.SendMessageAsync(resultMessage);
+
+        _logger.LogInformation("Result: {resultJson}", resultJson);
 
         await messageActions.CompleteMessageAsync(message);
     }
