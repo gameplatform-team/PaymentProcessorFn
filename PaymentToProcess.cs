@@ -28,7 +28,6 @@ public class PaymentToProcess
     {
         _logger.LogInformation("Message ID: {id}", message.MessageId);
         _logger.LogInformation("Message Body: {body}", message.Body);
-        _logger.LogInformation("Message Content-Type: {contentType}", message.ContentType);
 
         var paymentToProcess = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body.ToString());
 
