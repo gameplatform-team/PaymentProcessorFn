@@ -27,8 +27,13 @@ public class PaymentToProcess
         ServiceBusMessageActions messageActions)
     {
         _logger.LogInformation("Message Body: {body}", message.Body);
+        _logger.LogInformation("Message Body string: {body}", message.Body.ToString());
 
         var paymentToProcess = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body.ToString());
+        var paymentToProcessTeste = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body);
+
+        _logger.LogInformation("Message Deserialized: {paymentToProcess}", paymentToProcess);
+        _logger.LogInformation("Message Deserialized TESTE: {paymentToProcess}", paymentToProcessTeste);
 
         await Task.Delay(2000);
 
