@@ -32,9 +32,9 @@ public class PaymentToProcess
         var paymentToProcessTeste = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body);
         var paymentToProcessTeste2 = message.Body.ToObjectFromJson<PaymentToProcessDto>();
 
-        _logger.LogInformation("Message Deserialized: Id: {pagamentoId}, Valor: {valor}", paymentToProcess!.PagamentoId, paymentToProcess!.Valor);
-        _logger.LogInformation("Message Deserialized TESTE: Id: {pagamentoId}, Valor: {valor}", paymentToProcessTeste!.PagamentoId, paymentToProcessTeste!.Valor);
-        _logger.LogInformation("Message Deserialized TESTE 2: Id: {pagamentoId}, Valor: {valor}", paymentToProcessTeste2!.PagamentoId, paymentToProcessTeste2!.Valor);
+        _logger.LogInformation("Message Deserialized: Id: {pagamentoId}, Valor: {valor}", paymentToProcess!.pagamentoId, paymentToProcess!.valor);
+        _logger.LogInformation("Message Deserialized TESTE: Id: {pagamentoId}, Valor: {valor}", paymentToProcessTeste!.pagamentoId, paymentToProcessTeste!.valor);
+        _logger.LogInformation("Message Deserialized TESTE 2: Id: {pagamentoId}, Valor: {valor}", paymentToProcessTeste2!.pagamentoId, paymentToProcessTeste2!.valor);
 
         await Task.Delay(2000);
 
@@ -43,7 +43,7 @@ public class PaymentToProcess
 
         var paymentResult = new PaymentResultDto
         {
-            PagamentoId = paymentToProcess!.PagamentoId,
+            PagamentoId = paymentToProcess!.pagamentoId,
             Sucesso = sucesso
         };
 
