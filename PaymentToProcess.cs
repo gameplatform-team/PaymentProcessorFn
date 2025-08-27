@@ -29,12 +29,6 @@ public class PaymentToProcess
         _logger.LogInformation("Message Body: {body}", message.Body);
 
         var paymentToProcess = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body.ToString());
-        var paymentToProcessTeste = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body);
-        var paymentToProcessTeste2 = message.Body.ToObjectFromJson<PaymentToProcessDto>();
-
-        _logger.LogInformation("Message Deserialized: Id: {pagamentoId}, Valor: {valor}", paymentToProcess!.pagamentoId, paymentToProcess!.valor);
-        _logger.LogInformation("Message Deserialized TESTE: Id: {pagamentoId}, Valor: {valor}", paymentToProcessTeste!.pagamentoId, paymentToProcessTeste!.valor);
-        _logger.LogInformation("Message Deserialized TESTE 2: Id: {pagamentoId}, Valor: {valor}", paymentToProcessTeste2!.pagamentoId, paymentToProcessTeste2!.valor);
 
         await Task.Delay(2000);
 
