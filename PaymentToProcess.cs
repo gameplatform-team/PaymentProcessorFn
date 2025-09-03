@@ -33,7 +33,7 @@ public class PaymentToProcess
         await Task.Delay(2000);
 
         var random = new Random();
-        bool sucesso = random.Next(2) == 0;
+        bool sucesso = random.Next(3) != 0;
 
         var paymentResult = new PaymentResultDto
         {
