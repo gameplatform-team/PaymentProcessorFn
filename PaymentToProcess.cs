@@ -30,7 +30,7 @@ public class PaymentToProcess
 
         var paymentToProcess = JsonSerializer.Deserialize<PaymentToProcessDto>(message.Body.ToString());
 
-        await Task.Delay(2000);
+        await Task.Delay(TimeSpan.FromSeconds(5));
 
         var random = new Random();
         bool sucesso = random.Next(3) != 0;
